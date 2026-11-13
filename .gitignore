@@ -3,3 +3,5 @@ dist/
 .astro/
 _figma/
 .DS_Store
+dist-domain/
+dist-gh/

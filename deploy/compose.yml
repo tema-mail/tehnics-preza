@@ -1,0 +1,15 @@
+# Статика презентации «Техникс» для общего Caddy (сеть caddy). Наружу порты не открыты.
+name: tehnics-preza
+services:
+  web:
+    image: caddy:2-alpine
+    container_name: tehnics-preza-web
+    restart: unless-stopped
+    command: caddy file-server --root /srv --listen :8080
+    volumes:
+      - ./site:/srv:ro
+    mem_limit: 64m
+networks:
+  default:
+    name: caddy
+    external: true
