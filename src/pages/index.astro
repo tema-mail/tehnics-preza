@@ -1,0 +1,213 @@
+---
+import '@fontsource-variable/manrope';
+import '../styles/preza.css';
+import Icon from '../components/Icon.astro';
+
+const B = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const img = (n: string) => `${B}img/${n}.webp`;
+
+// Контакты – заменены по заданию 13.11.2026
+const PHONE = '+7 960 794-76-07';
+const PHONE_HREF = 'tel:+79607947607';
+const EMAIL = 't.tehnics@tehnics.bizml.ru';
+
+const directions = [
+  { icon: 'gear', title: 'Инженерные сети', items: [
+    ['кабельные линии канатных дорог'],
+    ['электрические сети', ['наружное освещение']],
+    ['слаботочные сети', ['ВОЛС', 'видеонаблюдение', 'СКУД']],
+  ] },
+  { icon: 'crane', title: 'Капитальное строительство', items: [
+    ['Бетонные работы'], ['Каменные работы'], ['Монтаж кровли и фасадов'], ['Внутренняя отделка'],
+  ] },
+  { icon: 'warehouse', title: 'Быстровозводимое строительство', items: [
+    ['Технические здания', ['гаражи для спец. техники', 'ангары']],
+    ['общественные здания', ['гостиницы', 'рестораны']],
+  ] },
+  { icon: 'box', title: 'Поставка', items: [
+    ['электрооборудование', ['шкафы управления', 'кабельная продукция', 'наружное освещение']],
+    ['запчасти'], ['спец. комплектующие'],
+  ] },
+] as const;
+
+const projects = [
+  { id: 'altai', title: 'Алтай рестарт', type: 'Горнолыжный курорт.', img: 'altai-m',
+    works: ['Инженерные сети', 'Управление проектом', 'Строительство МСО', 'Строительство канатной дороги'] },
+  { id: 'cheposh', title: 'Чепош парк', type: 'Туристический комплекс.', img: 'cheposh-m',
+    works: ['Инженерные сети', 'Строительство номерного фонда'] },
+  { id: 'sheregesh', title: 'Сектор Е Шерегеш', type: 'Горнолыжный курорт', img: 'sheregesh-m',
+    works: ['Строительство гостиниц и ресторанов', 'Инженерные сети', 'Комплексная поставка'] },
+];
+
+const steps = [
+  { icon: 'file', title: 'Получаем данные', text: 'Принимаем ТЗ, проект или другую исходную информацию.' },
+  { icon: 'search', title: 'Изучаем задачу', text: 'Анализируем технические требования и объёмы работ.' },
+  { icon: 'gear', title: 'Определяем состав работ', text: 'Формируем перечень оборудования, комплектующих и услуг.' },
+  { icon: 'fileCheck', title: 'Готовим предложение', text: 'Считаем стоимость, сроки и условия реализации.' },
+  { icon: 'handshake', title: 'Согласовываем условия', text: 'Обсуждаем детали и фиксируем договорённости.' },
+  { icon: 'hardhat', title: 'Подключаемся к проекту', text: 'Организуем поставки и выполнение работ в согласованные сроки.' },
+] as const;
+---
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Техникс – комплексное строительство горных объектов</title>
+  <meta name="description" content="Строительная компания Техникс: инженерные сети, капитальное и быстровозводимое строительство, поставка оборудования для горных объектов Сибири." />
+  <link rel="preload" as="image" href={img('hero-m')} />
+  <script is:inline>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<main>
+
+  <!-- 1. Обложка -->
+  <section class="slide hero">
+    <div class="slide__media"><img src={img('hero-m')} alt="Горный дом с панорамным остеклением и бассейном" width="941" height="920" fetchpriority="high" /></div>
+    <div class="slide__body">
+      <p class="kicker" data-reveal>Строительная компания Техникс</p>
+      <h1 data-reveal style="--d:1">Комплексное строительство горных объектов</h1>
+      <p class="lead" data-reveal style="--d:2">10 лет в строительной отрасли</p>
+      <ul class="dots" data-reveal style="--d:3">
+        <li>Инженерные сети</li><li>Капитальное строительство</li>
+        <li>Быстровозводимое строительство</li><li>Поставка оборудования</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2. Опыт -->
+  <section class="slide opyt">
+    <div class="slide__media"><img src={img('opyt')} alt="Карта присутствия: Новосибирская и Кемеровская области, Алтайский край, Республика Алтай, Иркутская область" width="887" height="875" loading="lazy" /></div>
+    <div class="slide__body">
+      <h2 data-reveal>Опыт</h2>
+      <p class="text" data-reveal style="--d:1">С&nbsp;2017 года компания Техникс оказывает услуги в&nbsp;строительстве инженерных сетей, опыт и&nbsp;системный подход позволяют качественно производить работы в&nbsp;горных условиях, где оптимизация&nbsp;– это огромный ресурс в&nbsp;экономии времени и&nbsp;финансов.</p>
+      <h3 class="h-sub" data-reveal style="--d:2">Преимущества:</h3>
+      <ul class="feats">
+        <li class="card feat" data-reveal style="--d:2"><span class="ico"><Icon name="gear" /></span><div><b>Производство смежных работ</b><span>Контроль взаимодействия инженерных сетей с&nbsp;конструктивом объекта.</span></div></li>
+        <li class="card feat" data-reveal style="--d:3"><span class="ico"><Icon name="calendar" /></span><div><b>Единый график производства</b><span>Планирование и&nbsp;минимизация простоев.</span></div></li>
+        <li class="card feat" data-reveal style="--d:4"><span class="ico"><Icon name="chart" /></span><div><b>Оптимизация решений</b><span>Экономия ресурсов.</span></div></li>
+      </ul>
+      <p class="card note" data-reveal style="--d:5"><span class="ico"><Icon name="handshake" /></span><b>Нашими партнерами являются топовые игроки туристической инфраструктуры Сибири и&nbsp;курорты федерального значения.</b></p>
+    </div>
+  </section>
+
+  <!-- 3. Направления -->
+  <section class="slide napr">
+    <div class="napr__pano"><img src={img('napr')} alt="" width="1672" height="236" loading="lazy" /></div>
+    <div class="slide__body slide__body--wide">
+      <h2 data-reveal>Направления</h2>
+      <div class="napr__grid">
+        {directions.map((d, i) => (
+          <article class="card dir" data-reveal style={`--d:${i + 1}`}>
+            <span class="dir__ico"><Icon name={d.icon} size={34} /><i></i></span>
+            <h3>{d.title}</h3>
+            <ul class="list">
+              {d.items.map(([t, sub]) => (
+                <li>{t}{sub && <ul>{sub.map((s) => <li>{s}</li>)}</ul>}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4–6. Проекты -->
+  {projects.map((p) => (
+    <section class={`slide project project--${p.id}`}>
+      <div class="slide__media"><img src={img(p.img)} alt={`${p.title} – ${p.type.replace('.', '')}`} width="941" height="853" loading="lazy" /></div>
+      <div class="slide__body">
+        <p class="label" data-reveal>Проекты</p>
+        <h2 class="h-xl" data-reveal style="--d:1">{p.title}</h2>
+        <p class="lead" data-reveal style="--d:2">{p.type}</p>
+        <div class="works" data-reveal style="--d:3">
+          <b>Работы</b>
+          {p.works.map((w) => <span>{w}</span>)}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- 7. Поставка оборудования -->
+  <section class="slide postavka">
+    <div class="slide__media"><img src={img('postavka')} alt="Склад: кабельные барабаны, шкафы управления, прожекторы, автоматы" width="836" height="706" loading="lazy" /></div>
+    <div class="slide__body">
+      <h2 data-reveal>Поставка оборудования</h2>
+      <p class="text text--lg" data-reveal style="--d:1">Поставки оборудования и&nbsp;комплектующих для строящихся и&nbsp;действующих объектов.</p>
+      <ul class="supply" data-reveal style="--d:2">
+        <li>Электрооборудование;
+          <ul><li>Шкафы управления;</li><li>Кабельная продукция;</li><li>Оборудование наружного освещения;</li></ul>
+        </li>
+        <li>Запчасти;</li>
+        <li>Специализированные комплектующие.</li>
+      </ul>
+      <p class="card note note--dot" data-reveal style="--d:3"><span><b>Есть артикул или маркировка&nbsp;– пришлите их нам.</b> Нет артикула&nbsp;– достаточно фотографии и&nbsp;описания.</span></p>
+    </div>
+  </section>
+
+  <!-- 8. Есть ТЗ -->
+  <section class="slide tz">
+    <div class="tz__top">
+      <div class="slide__body">
+        <h2 data-reveal>Есть ТЗ, проект или конкретный объём работ?</h2>
+        <p class="text text--lg" data-reveal style="--d:1">Пришлите исходные данные&nbsp;– изучим задачу и&nbsp;подготовим предложение.</p>
+        <p class="card note" data-reveal style="--d:2"><span class="ico"><Icon name="file" /></span><span><b>Можно отправить:</b>ТЗ · проект · ведомость объёмов · спецификацию · запрос на оборудование</span></p>
+      </div>
+      <div class="tz__img"><img src={img('tz')} alt="Здание: половина готова, половина в синем каркасе чертежа" width="703" height="526" loading="lazy" /></div>
+    </div>
+    <ol class="steps">
+      {steps.map((s, i) => (
+        <li class="step" data-reveal style={`--d:${i}`}>
+          <span class="step__num">{String(i + 1).padStart(2, '0')}</span>
+          <span class="step__ico"><Icon name={s.icon} /></span>
+          <b>{s.title}</b>
+          <span>{s.text}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- 9. Контакты -->
+  <section class="slide kontakty" id="kontakty">
+    <div class="slide__media"><img src={img('kontakty')} alt="Деревянный дом с бассейном в горах" width="786" height="941" loading="lazy" /></div>
+    <div class="slide__body">
+      <h2 class="h-caps" data-reveal>Контакты</h2>
+      <p class="lead lead--xl" data-reveal style="--d:1">Обсудим вашу задачу</p>
+      <p class="text" data-reveal style="--d:2">Надеемся на плодотворное сотрудничество.<br />Свяжитесь с&nbsp;нами удобным способом.</p>
+      <div class="contacts">
+        <div class="card contact" data-reveal style="--d:3">
+          <span class="ico"><Icon name="phone" /></span>
+          <small>Позвонить нам</small>
+          <a class="contact__val" href={PHONE_HREF}>{PHONE}</a>
+          <small>Мы на связи с 9:00 до 18:00</small>
+          <a class="btn btn--dark" href={PHONE_HREF}><Icon name="phone" size={18} />Позвонить сейчас</a>
+        </div>
+        <div class="card contact" data-reveal style="--d:4">
+          <span class="ico"><Icon name="mail" /></span>
+          <small>Написать нам</small>
+          <a class="contact__val contact__val--mail" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          <small>Ответим в течение 24 часов</small>
+          <a class="btn btn--line" href={`mailto:${EMAIL}`}><Icon name="mail" size={18} />Отправить письмо</a>
+        </div>
+      </div>
+      <p class="place" data-reveal style="--d:5"><Icon name="pin" /><span><b>Новосибирск / Сибирь</b>Реализуем проекты по&nbsp;всей Сибири и&nbsp;за&nbsp;её пределами.</span></p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Простое появление блоков при прокрутке
+  const els = document.querySelectorAll('[data-reveal], .slide__media, .tz__img');
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach((e) => e.classList.add('is-in'));
+  } else {
+    const io = new IntersectionObserver((list) => {
+      list.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+    els.forEach((e) => io.observe(e));
+  }
+</script>
+</body>
+</html>
